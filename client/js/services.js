@@ -8,6 +8,22 @@
 
         var gitStats = {};
 
+        gitStats.getContributors = function(){
+            return $http.get(domain + 'git/get-contributors');
+        };
+
+        gitStats.getPullRequests = function(){
+            return $http.get(domain + 'git/get-pull-requests');
+        };
+
+        gitStats.getIssues = function(){
+            return $http.get(domain + 'git/get-issues');
+        };
+
+        gitStats.getMostMergesUser = function(){
+            return $http.get(domain + 'git/get-most-merges-user');
+        };
+
         return gitStats;
 
     }]);
