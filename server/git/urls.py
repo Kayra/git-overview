@@ -8,8 +8,8 @@ urlpatterns = [
 
     url(r'^get-pull-requests', views.getPullRequests, name='getPullRequests'),
 
-    url(r'^get-recent-issues', views.getRecentIssues, name='getRecentIssues'),
+    url(r'^get-issues', views.getIssues, name='getIssues'),
 
-    url(r'^get-mvp', views.getMVP, name='getMVP'),
+    url(r'^get-most-merges-user', views.getMostMergesUser, name='getMostMergesUser'),
 
 ]

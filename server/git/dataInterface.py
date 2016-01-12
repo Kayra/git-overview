@@ -6,7 +6,7 @@ gitData = Git()
 def topContributors():
     """
     Returns the top five contributors to the repository.
-    Each object in the list is composed of:
+    Each dict in the list is composed of:
     name(string), contributions(int), url(string), avatar_url(string)
     """
 
@@ -20,7 +20,7 @@ def topContributors():
             contributions = contributor.contributions
             url = contributor.html_url
             avatarUrl = contributor.avatar_url
-            contributorsList.append((contributions, name, url, avatarUrl))
+            contributorsList.append({'contributions': contributions, 'name': name, 'url': url, 'avatarUrl': avatarUrl})
 
         except AttributeError:
             pass
@@ -33,7 +33,7 @@ def topContributors():
 def recentPullRequests():
     """
     Returns the five most recent pull requests.
-    Each object in the list is composed of:
+    Each dict in the list is composed of:
     title(string), creationDate(datetime.datetime), url(string), body(string)
     """
 
@@ -46,7 +46,7 @@ def recentPullRequests():
         creationDate = pullRequest.created_at
         url = pullRequest.html_url
         body = pullRequest.body
-        pullRequestList.append((title, creationDate, url, body))
+        pullRequestList.append({'title': title, 'creationDate': creationDate, 'url': url, 'body': body})
 
     sorted(pullRequestList)
 
@@ -56,30 +56,30 @@ def recentPullRequests():
 def recentIssues():
     """
     Returns the five most recent issues.
-    Each object in the list is composed of:
+    Each dict in the list is composed of:
     title(string), creationDate(datetime.datetime), url(string), body(string)
     """
 
     issues = gitData.issues()
 
-    issueList = []
+    issuesList = []
 
     for issue in issues:
         title = issue.title
         creationDate = issue.created_at
         url = issue.html_url
         body = issue.body
-        issueList.append((title, creationDate, url, body))
+        issuesList.append({'title': title, 'creationDate': creationDate, 'url': url, 'body': body})
 
-    sorted(issueList)
+    sorted(issuesList)
 
-    return(issueList[:5])
+    return(issuesList[:5])
 
 
-def mostMerges():
+def mostMergesUser():
     """
     Returns the user who has merged the most pull requests.
-    The object is composed of:
+    The dictionary is composed of:
     name(string)
     """
 
@@ -90,10 +90,9 @@ def mostMerges():
     for pull in pulls:
         try:
             pullsList.append((pull.merged_by.name.encode('utf-8')))
-            print(pull.merged_by.name.encode('utf-8'))
         except AttributeError:
             pass
 
     name = max(set(pullsList), key=pullsList.count)
 
-    return((name))
+    return({'name': name})
