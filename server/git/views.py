@@ -20,7 +20,7 @@ def getPullRequests(request):
 
 
 @api_view(['GET'])
-def getRecentIssues(request):
+def getIssues(request):
     """
     Returns the five most recently opened issues.
     """
@@ -28,7 +28,7 @@ def getRecentIssues(request):
 
 
 @api_view(['GET'])
-def getMVP(request):
+def getMostMerges(request):
     """
     Returns the user who has merged the most pull requests.
     """
