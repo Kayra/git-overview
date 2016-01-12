@@ -2,7 +2,6 @@
 
     var tangentSnowballAppControllers = angular.module('tangentSnowballApp.controllers', []);
 
-
     tangentSnowballAppControllers.controller('DisplayController', ['GitService', function(GitService) {
 
         var vm = this;
@@ -11,7 +10,7 @@
             GitService.getContributors()
             .success(function(response){
                 vm.contributors = response;
-            });
+            })
             .error(function(){
                 vm.error = "The server seems to be down."
             });
@@ -21,7 +20,7 @@
             GitService.getPullRequests()
             .success(function(response){
                 vm.pullRequests = response;
-            });
+            })
             .error(function(){
                 vm.error = "The server seems to be down."
             });
@@ -31,7 +30,7 @@
             GitService.getIssues()
             .success(function(response){
                 vm.issues = response;
-            });
+            })
             .error(function(){
                 vm.error = "The server seems to be down."
             });
@@ -41,7 +40,7 @@
             GitService.getMostMergesUser()
             .success(function(response){
                 vm.user = response;
-            });
+            })
             .error(function(){
                 vm.error = "The server seems to be down."
             });
@@ -54,4 +53,4 @@
 
     }]);
 
-});
+})();

@@ -3,7 +3,6 @@
     var app = angular.module('tangentSnowballApp', [
         'ui.router',
         'ngResource',
-        'ngMessages',
         'tangentSnowballApp.services',
         'tangentSnowballApp.controllers',
     ])
