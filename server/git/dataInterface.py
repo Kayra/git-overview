@@ -51,7 +51,7 @@ def recentPullRequests():
 
     for pullRequest in pullRequests:
         title = pullRequest.title
-        creationDate = pullRequest.created_at
+        creationDate = pullRequest.created_at.date()
         url = pullRequest.html_url
         body = pullRequest.body
         pullRequestList.append((title, creationDate, url, body))
@@ -61,7 +61,8 @@ def recentPullRequests():
     pullRequestDicts = []
 
     for pullRequest in pullRequestList[:5]:
-        pullRequestDicts.append({'title': title, 'creationDate': str(creationDate), 'url': url, 'body': body})
+        list(pullRequest)
+        pullRequestDicts.append({'title': pullRequest[0], 'creationDate': str(pullRequest[1]), 'url': pullRequest[2], 'body': pullRequest[3]})
 
     return(pullRequestDicts)
 

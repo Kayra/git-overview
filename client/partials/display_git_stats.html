@@ -4,3 +4,8 @@
     <a href="{{ contributor.url }}"><p>{{ contributor.name }}</p></a>
     <p>{{ contributor.contributions }}</p>
 </div>
+
+<div ng-repeat="pullRequest in display.pullRequests track by $index">
+    <a href="{{ pullRequest.url }}"><h2>{{ pullRequest.title }} - {{ pullRequest.creationDate }}</h2></a>
+    <p>{{ pullRequest.body }}</p>
+</div>
