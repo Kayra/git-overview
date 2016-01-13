@@ -9,3 +9,8 @@
     <a href="{{ pullRequest.url }}"><h2>{{ pullRequest.title }} - {{ pullRequest.creationDate }}</h2></a>
     <p>{{ pullRequest.body }}</p>
 </div>
+
+<div ng-repeat="issue in display.issues track by $index">
+    <a href="{{ issue.url }}"><h2>{{ issue.title }} - {{ issue.creationDate }}</h2></a>
+    <p>{{ issue.body }}</p>
+</div>

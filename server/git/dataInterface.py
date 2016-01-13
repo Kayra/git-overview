@@ -80,7 +80,7 @@ def recentIssues():
 
     for issue in issues:
         title = issue.title
-        creationDate = issue.created_at
+        creationDate = issue.created_at.date()
         url = issue.html_url
         body = issue.body
         issueList.append((title, creationDate, url, body))
@@ -90,7 +90,8 @@ def recentIssues():
     issueDicts = []
 
     for issue in issueList[:5]:
-        issueDicts.append({'title': title, 'creationDate': str(creationDate), 'url': url, 'body': body})
+        list(issue)
+        issueDicts.append({'title': issue[0], 'creationDate': str(issue[1]), 'url': issue[2], 'body': issue[3]})
 
     return(issueDicts)
 
