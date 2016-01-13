@@ -32,9 +32,8 @@ def topContributors():
     contributorsDicts = []
 
     for contributor in contributorsList[:5]:
-        # print(('contributions', contributions, 'name', str(name), 'url', url, 'avatarUrl', avatarUrl))
         list(contributor)
-        contributorsDicts.append({'contributions': contributor[0], 'name': str(contributor[1]), 'url': contributor[2], 'avatarUrl': contributor[3]})
+        contributorsDicts.append({'contributions': contributor[0], 'name': contributor[1].decode("utf-8"), 'url': contributor[2], 'avatarUrl': contributor[3]})
 
     return(contributorsDicts)
 
@@ -114,4 +113,4 @@ def mostMergesUser():
 
     name = max(set(pullsList), key=pullsList.count)
 
-    return({'name': name})
+    return({'name': name.decode("utf-8")})

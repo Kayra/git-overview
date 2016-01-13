@@ -47,9 +47,9 @@
         };
 
         vm.getContributors();
-        vm.getPullRequests();
-        vm.getIssues();
-        vm.getMostMergesUser();
+        // vm.getPullRequests();
+        // vm.getIssues();
+        // vm.getMostMergesUser();
 
     }]);
 
