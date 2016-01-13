@@ -1,5 +1,5 @@
 
-<div ng-repeat="contributor in display.contributors">
+<div ng-repeat="contributor in display.contributors track by $index">
     <p>{{ contributor.name }}</p>
     <p>{{ contributor.contributions }}</p>
 </div>

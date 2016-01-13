@@ -1,5 +1,3 @@
-import json
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -12,9 +10,9 @@ def getContributors(request):
     Returns the five users with the most contributions to the project.
     """
 
-    contributorsList = dataInterface.topContributors()
+    contributorsDicts = dataInterface.topContributors()
 
-    return Response(json.dumps(contributorsList))
+    return Response(contributorsDicts)
 
 
 @api_view(['GET'])
@@ -23,9 +21,9 @@ def getPullRequests(request):
     Returns the five most recently opened pull requests.
     """
 
-    pullRequestsList = dataInterface.recentPullRequests()
+    pullRequestsDicts = dataInterface.recentPullRequests()
 
-    return Response(json.dumps(pullRequestsList))
+    return Response(pullRequestsDicts)
 
 
 @api_view(['GET'])
@@ -34,9 +32,9 @@ def getIssues(request):
     Returns the five most recently opened issues.
     """
 
-    issuesList = dataInterface.recentIssues()
+    issueDicts = dataInterface.recentIssues()
 
-    return Response(json.dumps(issuesList))
+    return Response(issueDicts)
 
 
 @api_view(['GET'])
@@ -47,4 +45,4 @@ def getMostMergesUser(request):
 
     mostMergesUser = dataInterface.mostMergesUser()
 
-    return Response(json.dumps(mostMergesUser))
+    return Response(mostMergesUser)

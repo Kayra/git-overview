@@ -20,14 +20,23 @@ def topContributors():
             contributions = contributor.contributions
             url = contributor.html_url
             avatarUrl = contributor.avatar_url
-            contributorsList.append({'contributions': contributions, 'name': name, 'url': url, 'avatarUrl': avatarUrl})
+            contributorsList.append((contributions, name, url, avatarUrl))
 
         except AttributeError:
             pass
 
     sorted(contributorsList)
 
-    return(contributorsList[:5])
+    print(contributorsList)
+
+    contributorsDicts = []
+
+    for contributor in contributorsList[:5]:
+        # print(('contributions', contributions, 'name', str(name), 'url', url, 'avatarUrl', avatarUrl))
+        list(contributor)
+        contributorsDicts.append({'contributions': contributor[0], 'name': str(contributor[1]), 'url': contributor[2], 'avatarUrl': contributor[3]})
+
+    return(contributorsDicts)
 
 
 def recentPullRequests():
@@ -46,11 +55,16 @@ def recentPullRequests():
         creationDate = pullRequest.created_at
         url = pullRequest.html_url
         body = pullRequest.body
-        pullRequestList.append({'title': title, 'creationDate': creationDate, 'url': url, 'body': body})
+        pullRequestList.append((title, creationDate, url, body))
 
     sorted(pullRequestList)
 
-    return(pullRequestList[:5])
+    pullRequestDicts = []
+
+    for pullRequest in pullRequestList[:5]:
+        pullRequestDicts.append({'title': title, 'creationDate': str(creationDate), 'url': url, 'body': body})
+
+    return(pullRequestDicts)
 
 
 def recentIssues():
@@ -62,18 +76,23 @@ def recentIssues():
 
     issues = gitData.issues()
 
-    issuesList = []
+    issueList = []
 
     for issue in issues:
         title = issue.title
         creationDate = issue.created_at
         url = issue.html_url
         body = issue.body
-        issuesList.append({'title': title, 'creationDate': creationDate, 'url': url, 'body': body})
+        issueList.append((title, creationDate, url, body))
 
-    sorted(issuesList)
+    sorted(issueList)
 
-    return(issuesList[:5])
+    issueDicts = []
+
+    for issue in issueList[:5]:
+        issueDicts.append({'title': title, 'creationDate': str(creationDate), 'url': url, 'body': body})
+
+    return(issueDicts)
 
 
 def mostMergesUser():
