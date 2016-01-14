@@ -1,8 +1,11 @@
 
-<div ng-repeat="contributor in display.contributors track by $index">
+<h1>Git Overview for Django-Oscar</h1>
+
+<h2>Top Contributors</h2>
+<div ng-repeat="contributor in display.contributors track by $index" class="contributor">
     <a href="{{ contributor.url }}"><img src="{{ contributor.avatarUrl }}"></a>
-    <a href="{{ contributor.url }}"><p>{{ contributor.name }}</p></a>
-    <p>{{ contributor.contributions }}</p>
+    <a href="{{ contributor.url }}"><h3>{{ contributor.name }}</h3></a>
+    <p>Contributions: {{ contributor.contributions }}</p>
 </div>
 
 <div ng-repeat="pullRequest in display.pullRequests track by $index">
@@ -16,3 +19,5 @@
 </div>
 
 <p>mvp: {{ display.user.name }}</p>
+
+<p>{{ vm.error }}</p>
