@@ -6,6 +6,7 @@ Django==1.9.1
 django-cors-headers==1.1.0
 djangorestframework==3.3.2
 kombu==3.0.33
+psycopg2==2.6.1
 PyGithub==1.26.0
 pytz==2015.7
 redis==2.10.5
