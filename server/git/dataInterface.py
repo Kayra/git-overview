@@ -7,7 +7,7 @@ gitData = Git()
 def topContributors():
     """
     Returns the top five contributors to the repository.
-    Each dict in the list is composed of:
+    Each set in the list is composed of:
     name(string), contributions(int), url(string), avatar_url(string)
     """
 
@@ -22,7 +22,6 @@ def topContributors():
             url = contributor.html_url
             avatarUrl = contributor.avatar_url
             contributorsList.append((contributions, name, url, avatarUrl))
-
         except AttributeError:
             pass
 
@@ -35,7 +34,7 @@ def topContributors():
 def recentPullRequests():
     """
     Returns the five most recent pull requests.
-    Each dict in the list is composed of:
+    Each set in the list is composed of:
     title(string), creationDate(datetime.datetime), url(string), body(string)
     """
 
@@ -52,13 +51,8 @@ def recentPullRequests():
 
     sorted(pullRequestList)
 
-    pullRequestDicts = []
-
-    for pullRequest in pullRequestList[:5]:
-        list(pullRequest)
-        pullRequestDicts.append({'title': pullRequest[0], 'creationDate': str(pullRequest[1]), 'url': pullRequest[2], 'body': pullRequest[3]})
-
-    return(pullRequestDicts)
+    for index, pullRequest in enumerate(pullRequestList[:5]):
+        PullRequest.objects.update_or_create(title=pullRequest[0], creationDate=pullRequest[1], url=pullRequest[2], body=pullRequest[3], position=index)
 
 
 def recentIssues():

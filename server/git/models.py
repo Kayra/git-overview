@@ -11,7 +11,7 @@ class Contributor(models.Model):
 
 class PullRequest(models.Model):
     title = models.CharField(max_length=255)
-    creationDate = models.DateTimeField()
+    creationDate = models.DateField()
     url = models.CharField(max_length=255)
     body = models.TextField()
     position = models.IntegerField()
@@ -19,7 +19,7 @@ class PullRequest(models.Model):
 
 class Issue(models.Model):
     title = models.CharField(max_length=255)
-    creationDate = models.DateTimeField()
+    creationDate = models.DateField()
     url = models.CharField(max_length=255)
     body = models.TextField()
     position = models.IntegerField()

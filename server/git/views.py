@@ -2,8 +2,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import Contributor
-from .serializers import ContributorSerializer
+from .models import Contributor, PullRequest
+from .serializers import ContributorSerializer, PullRequestSerializer
 
 from . import dataInterface
 
@@ -31,9 +31,15 @@ def getPullRequests(request):
     Returns the five most recently opened pull requests.
     """
 
-    pullRequestsDicts = dataInterface.recentPullRequests()
+    dataInterface.recentPullRequests()
 
-    return Response(pullRequestsDicts)
+    try:
+        pullRequests = PullRequest.objects.all()
+    except PullRequest.DoesNotExist:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    serializer = PullRequestSerializer(pullRequests, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
