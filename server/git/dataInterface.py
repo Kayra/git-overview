@@ -1,4 +1,5 @@
 from .githubAPI import Git
+from .models import Contributor, PullRequest, Issue, User
 
 gitData = Git()
 
@@ -27,15 +28,8 @@ def topContributors():
 
     sorted(contributorsList)
 
-    print(contributorsList)
-
-    contributorsDicts = []
-
-    for contributor in contributorsList[:5]:
-        list(contributor)
-        contributorsDicts.append({'contributions': contributor[0], 'name': contributor[1].decode("utf-8"), 'url': contributor[2], 'avatarUrl': contributor[3]})
-
-    return(contributorsDicts)
+    for index, contributor in enumerate(contributorsList[:5]):
+        contributor, created = Contributor.objects.update_or_create(contributions=contributor[0], name=contributor[1].decode('utf-8'), url=contributor[2], avatarUrl=contributor[3], position=index)
 
 
 def recentPullRequests():

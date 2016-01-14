@@ -5,7 +5,7 @@ class Contributor(models.Model):
     name = models.CharField(max_length=255)
     contributions = models.IntegerField()
     url = models.CharField(max_length=255)
-    avatar_url = models.CharField(max_length=255)
+    avatarUrl = models.CharField(max_length=255)
     position = models.IntegerField()
 
 

@@ -1,5 +1,9 @@
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+from .models import Contributor
+from .serializers import ContributorSerializer
 
 from . import dataInterface
 
@@ -10,9 +14,15 @@ def getContributors(request):
     Returns the five users with the most contributions to the project.
     """
 
-    contributorsDicts = dataInterface.topContributors()
+    dataInterface.topContributors()
 
-    return Response(contributorsDicts)
+    try:
+        contributors = Contributor.objects.all()
+    except Contributor.DoesNotExist:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    serializer = ContributorSerializer(contributors, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])

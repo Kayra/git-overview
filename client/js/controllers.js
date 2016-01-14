@@ -46,10 +46,10 @@
             });
         };
 
-        // vm.getContributors();
+        vm.getContributors();
         // vm.getPullRequests();
         // vm.getIssues();
-        vm.getMostMergesUser();
+        // vm.getMostMergesUser();
 
     }]);
 
