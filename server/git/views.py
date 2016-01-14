@@ -5,16 +5,12 @@ from rest_framework.response import Response
 from .models import Contributor, PullRequest, Issue, User
 from .serializers import ContributorSerializer, PullRequestSerializer, IssueSerializer, UserSerializer
 
-from . import dataInterface
-
 
 @api_view(['GET'])
 def getContributors(request):
     """
     Returns the five users with the most contributions to the project.
     """
-
-    dataInterface.topContributors()
 
     try:
         contributors = Contributor.objects.all()
@@ -31,8 +27,6 @@ def getPullRequests(request):
     Returns the five most recently opened pull requests.
     """
 
-    dataInterface.recentPullRequests()
-
     try:
         pullRequests = PullRequest.objects.all()
     except PullRequest.DoesNotExist:
@@ -48,8 +42,6 @@ def getIssues(request):
     Returns the five most recently opened issues.
     """
 
-    dataInterface.recentIssues()
-
     try:
         issues = Issue.objects.all()
     except Issue.DoesNotExist:
@@ -64,8 +56,6 @@ def getMostMergesUser(request):
     """
     Returns the user who has merged the most pull requests.
     """
-
-    dataInterface.mostMergesUser()
 
     try:
         user = User.objects.get(id=1)

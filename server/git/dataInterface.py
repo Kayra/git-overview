@@ -86,14 +86,13 @@ def mostMergesUser():
     name(string)
     """
 
-    pulls = gitData.closedPullRequests()
+    pullRequests = gitData.closedPullRequests()
 
     pullsList = []
 
-    for pull in pulls:
+    for pullRequest in pullRequests:
         try:
-            print(pull.merged_by.name.encode('utf-8'))
-            pullsList.append((pull.merged_by.name.encode('utf-8')))
+            pullsList.append((pullRequest.merged_by.name.encode('utf-8')))
         except AttributeError:
             pass
 
@@ -101,3 +100,9 @@ def mostMergesUser():
 
     User.objects.update_or_create(id=1, name=userName.decode('utf-8'))
 
+
+def updateAPIData():
+    topContributors()
+    recentPullRequests()
+    recentIssues()
+    mostMergesUser()
