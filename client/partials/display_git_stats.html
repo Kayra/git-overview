@@ -2,21 +2,33 @@
 <h1>Git Overview for Django-Oscar</h1>
 
 <h2>Top Contributors</h2>
-<div ng-repeat="contributor in display.contributors track by $index" class="contributor">
-    <a href="{{ contributor.url }}"><img src="{{ contributor.avatarUrl }}"></a>
-    <a href="{{ contributor.url }}"><h3>{{ contributor.name }}</h3></a>
-    <p>Contributions: {{ contributor.contributions }}</p>
+<div class="contributors">
+    <div ng-repeat="contributor in display.contributors track by $index" class="contributor">
+        <a href="{{ contributor.url }}"><img src="{{ contributor.avatarUrl }}"></a>
+        <a href="{{ contributor.url }}"><h3>{{ contributor.name }}</h3></a>
+        <p>Contributions: {{ contributor.contributions }}</p>
+    </div>
 </div>
 
-<div ng-repeat="pullRequest in display.pullRequests track by $index">
-    <a href="{{ pullRequest.url }}"><h2>{{ pullRequest.title }} - {{ pullRequest.creationDate }}</h2></a>
+<hr>
+
+<h2>Most Recent Pull Requests</h2>
+<div ng-repeat="pullRequest in display.pullRequests track by $index" class="request">
+    <a href="{{ pullRequest.url }}"><h3>{{ pullRequest.title }} ></h3></a>
+    <p class="date">Created on {{ pullRequest.creationDate }}</p>
     <p>{{ pullRequest.body }}</p>
 </div>
 
-<div ng-repeat="issue in display.issues track by $index">
-    <a href="{{ issue.url }}"><h2>{{ issue.title }} - {{ issue.creationDate }}</h2></a>
+<hr>
+
+<h2>Most Recent Issues</h2>
+<div ng-repeat="issue in display.issues track by $index" class="request">
+    <a href="{{ issue.url }}"><h3>{{ issue.title }} ></h3></a>
+    <p class="date">Created on {{ issue.creationDate }}</p>
     <p>{{ issue.body }}</p>
 </div>
+
+<hr>
 
 <p>mvp: {{ display.user.name }}</p>
 
