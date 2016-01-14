@@ -2,8 +2,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import Contributor, PullRequest, Issue
-from .serializers import ContributorSerializer, PullRequestSerializer, IssueSerializer
+from .models import Contributor, PullRequest, Issue, User
+from .serializers import ContributorSerializer, PullRequestSerializer, IssueSerializer, UserSerializer
 
 from . import dataInterface
 
@@ -65,6 +65,12 @@ def getMostMergesUser(request):
     Returns the user who has merged the most pull requests.
     """
 
-    mostMergesUser = dataInterface.mostMergesUser()
+    dataInterface.mostMergesUser()
 
-    return Response(mostMergesUser)
+    try:
+        user = User.objects.get(id=1)
+    except User.DoesNotExist:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    serializer = UserSerializer(user)
+    return Response(serializer.data)

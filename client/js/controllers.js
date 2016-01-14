@@ -48,8 +48,8 @@
 
         // vm.getContributors();
         // vm.getPullRequests();
-        vm.getIssues();
-        // vm.getMostMergesUser();
+        // vm.getIssues();
+        vm.getMostMergesUser();
 
     }]);
 

@@ -82,7 +82,7 @@ def recentIssues():
 def mostMergesUser():
     """
     Returns the user who has merged the most pull requests.
-    The dictionary is composed of:
+    The set is composed of:
     name(string)
     """
 
@@ -97,6 +97,7 @@ def mostMergesUser():
         except AttributeError:
             pass
 
-    name = max(set(pullsList), key=pullsList.count)
+    userName = max(set(pullsList), key=pullsList.count)
 
-    return({'name': name.decode("utf-8")})
+    User.objects.update_or_create(id=1, name=userName.decode('utf-8'))
+
