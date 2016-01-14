@@ -28,7 +28,7 @@ def topContributors():
     sorted(contributorsList)
 
     for index, contributor in enumerate(contributorsList[:5]):
-        contributor, created = Contributor.objects.update_or_create(contributions=contributor[0], name=contributor[1].decode('utf-8'), url=contributor[2], avatarUrl=contributor[3], position=index)
+        Contributor.objects.update_or_create(contributions=contributor[0], name=contributor[1].decode('utf-8'), url=contributor[2], avatarUrl=contributor[3], position=index)
 
 
 def recentPullRequests():
@@ -58,7 +58,7 @@ def recentPullRequests():
 def recentIssues():
     """
     Returns the five most recent issues.
-    Each dict in the list is composed of:
+    Each set in the list is composed of:
     title(string), creationDate(datetime.datetime), url(string), body(string)
     """
 
@@ -75,13 +75,8 @@ def recentIssues():
 
     sorted(issueList)
 
-    issueDicts = []
-
-    for issue in issueList[:5]:
-        list(issue)
-        issueDicts.append({'title': issue[0], 'creationDate': str(issue[1]), 'url': issue[2], 'body': issue[3]})
-
-    return(issueDicts)
+    for index, issue in enumerate(issueList[:5]):
+        Issue.objects.update_or_create(title=issue[0], creationDate=issue[1], url=issue[2], body=issue[3], position=index)
 
 
 def mostMergesUser():

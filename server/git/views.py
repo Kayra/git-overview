@@ -2,8 +2,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import Contributor, PullRequest
-from .serializers import ContributorSerializer, PullRequestSerializer
+from .models import Contributor, PullRequest, Issue
+from .serializers import ContributorSerializer, PullRequestSerializer, IssueSerializer
 
 from . import dataInterface
 
@@ -48,9 +48,15 @@ def getIssues(request):
     Returns the five most recently opened issues.
     """
 
-    issueDicts = dataInterface.recentIssues()
+    dataInterface.recentIssues()
 
-    return Response(issueDicts)
+    try:
+        issues = Issue.objects.all()
+    except Issue.DoesNotExist:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    serializer = IssueSerializer(issues, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
