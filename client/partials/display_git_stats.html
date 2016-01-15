@@ -30,6 +30,12 @@
 
 <hr>
 
-<p>mvp: {{ display.user.name }}</p>
+<div class="mvp">
+    <h2>MVP</h2>
+    <h3>Most merges</h3>
 
-<p>{{ vm.error }}</p>
+    <a href="{{ display.user.url }}"><img src="{{ display.user.avatarUrl }}"></a>
+    <p><a href="{{ display.user.url }}">{{ display.user.name }}</a> with {{ display.user.merges}} problems solved</p>
+
+    <p>{{ vm.error }}</p>
+</div>

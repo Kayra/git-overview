@@ -88,17 +88,38 @@ def mostMergesUser():
 
     pullRequests = gitData.closedPullRequests()
 
-    pullsList = []
+    pullsRequestNamesList = []
 
     for pullRequest in pullRequests:
         try:
-            pullsList.append((pullRequest.merged_by.name.encode('utf-8')))
+            print((pullRequest.merged_by.name.encode('utf-8')))
+            pullsRequestNamesList.append((pullRequest.merged_by.name.encode('utf-8')))
         except AttributeError:
             pass
 
-    userName = max(set(pullsList), key=pullsList.count)
+    userName = max(set(pullsRequestNamesList), key=pullsRequestNamesList.count)
 
-    User.objects.update_or_create(id=1, name=userName.decode('utf-8'))
+    merges = pullsRequestNamesList.count(userName)
+
+    for pullRequest in pullRequests:
+        try:
+            if userName in pullRequest.merged_by.name.encode('utf-8'):
+                url = pullRequest.merged_by.html_url
+                avatarUrl = pullRequest.merged_by.avatar_url
+                break
+        except AttributeError:
+            pass
+
+    try:
+        userObject = User.objects.get(id=1)
+        userObject.name = userName.decode('utf-8')
+        userObject.merges = merges
+        userObject.url = url
+        userObject.avatarUrl = avatarUrl
+    except User.DoesNotExist:
+        userObject = User(name=userName.decode('utf-8'), merges=merges, url=url, avatarUrl=avatarUrl)
+
+    userObject.save()
 
 
 def updateAPIData():

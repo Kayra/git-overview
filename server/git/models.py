@@ -27,3 +27,6 @@ class Issue(models.Model):
 
 class User(models.Model):
     name = models.CharField(max_length=255)
+    merges = models.IntegerField()
+    url = models.CharField(max_length=255)
+    avatarUrl = models.CharField(max_length=255)
