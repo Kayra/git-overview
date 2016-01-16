@@ -92,7 +92,6 @@ def mostMergesUser():
 
     for pullRequest in pullRequests:
         try:
-            print((pullRequest.merged_by.name.encode('utf-8')))
             pullsRequestNamesList.append((pullRequest.merged_by.name.encode('utf-8')))
         except AttributeError:
             pass

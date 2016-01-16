@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import Contributor, PullRequest, Issue, User
 
-# Register your models here.
+admin.register(Contributor, PullRequest, Issue, User)(admin.ModelAdmin)
