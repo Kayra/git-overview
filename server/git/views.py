@@ -17,7 +17,7 @@ def getContributors(request):
     except Contributor.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    if contributors.count() > 0:
+    if contributors.exists():
         serializer = ContributorSerializer(contributors, many=True)
         return Response(serializer.data)
     else:
@@ -35,7 +35,7 @@ def getPullRequests(request):
     except PullRequest.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    if pullRequests.count() > 0:
+    if pullRequests.exists():
         serializer = PullRequestSerializer(pullRequests, many=True)
         return Response(serializer.data)
     else:
