@@ -13,7 +13,7 @@ def getContributors(request):
     """
 
     try:
-        contributors = Contributor.objects.all()
+        contributors = Contributor.objects.all().order_by('-contributions')
     except Contributor.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -31,7 +31,7 @@ def getPullRequests(request):
     """
 
     try:
-        pullRequests = PullRequest.objects.all()
+        pullRequests = PullRequest.objects.all().order_by('-creationDate')
     except PullRequest.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -49,7 +49,7 @@ def getIssues(request):
     """
 
     try:
-        issues = Issue.objects.all()
+        issues = Issue.objects.all().order_by('-creationDate')
     except Issue.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
