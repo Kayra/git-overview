@@ -17,11 +17,8 @@ def getContributors(request):
     except Contributor.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    if contributors.exists():
-        serializer = ContributorSerializer(contributors, many=True)
-        return Response(serializer.data)
-    else:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+    serializer = ContributorSerializer(contributors, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -35,11 +32,8 @@ def getPullRequests(request):
     except PullRequest.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    if pullRequests.exists():
-        serializer = PullRequestSerializer(pullRequests, many=True)
-        return Response(serializer.data)
-    else:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+    serializer = PullRequestSerializer(pullRequests, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
@@ -53,11 +47,8 @@ def getIssues(request):
     except Issue.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    if issues.count():
-        serializer = IssueSerializer(issues, many=True)
-        return Response(serializer.data)
-    else:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+    serializer = IssueSerializer(issues, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET'])
