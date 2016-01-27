@@ -4,12 +4,12 @@ from . import views
 
 urlpatterns = [
 
-    url(r'^get-contributors', views.getContributors, name='getContributors'),
+    url(r'^contributors', views.ContributorList.as_view(), name='contributorList'),
 
-    url(r'^get-pull-requests', views.getPullRequests, name='getPullRequests'),
+    url(r'^pull-requests', views.PullRequestList.as_view(), name='pullRequestList'),
 
-    url(r'^get-issues', views.getIssues, name='getIssues'),
+    url(r'^issues', views.IssueList.as_view(), name='issueList'),
 
-    url(r'^get-most-merges-user', views.getMostMergesUser, name='getMostMergesUser'),
+    url(r'^most-merges-user', views.MostMergesUserList.as_view(), name='mostMergesUserList'),
 
 ]

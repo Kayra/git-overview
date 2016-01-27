@@ -9,19 +9,19 @@
         var gitStats = {};
 
         gitStats.getContributors = function(){
-            return $http.get(domain + 'git/get-contributors');
+            return $http.get(domain + 'git/contributors');
         };
 
         gitStats.getPullRequests = function(){
-            return $http.get(domain + 'git/get-pull-requests');
+            return $http.get(domain + 'git/pull-requests');
         };
 
         gitStats.getIssues = function(){
-            return $http.get(domain + 'git/get-issues');
+            return $http.get(domain + 'git/issues');
         };
 
         gitStats.getMostMergesUser = function(){
-            return $http.get(domain + 'git/get-most-merges-user');
+            return $http.get(domain + 'git/most-merges-user');
         };
 
         return gitStats;

@@ -39,7 +39,7 @@
         vm.getMostMergesUser = function(){
             GitService.getMostMergesUser()
             .success(function(response){
-                vm.user = response;
+                vm.user = response[0];
             })
             .error(function(){
                 vm.error = "The server seems to be down."
