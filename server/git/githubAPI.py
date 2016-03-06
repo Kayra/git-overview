@@ -5,9 +5,9 @@ class Git:
 
     git = Github()
 
-    djangoOscarId = 1151051
+    repoId = 1431547
 
-    repository = git.get_repo(djangoOscarId)
+    repository = git.get_repo(repoId)
 
     def contributors(self):
         return Git.repository.get_contributors()
