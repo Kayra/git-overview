@@ -5,20 +5,20 @@ from .serializers import ContributorSerializer, PullRequestSerializer, IssueSeri
 
 
 class ContributorList(generics.ListAPIView):
-    queryset = Contributor.objects.all()
+    queryset = Contributor.objects.all().order_by('id')[:5]
     serializer_class = ContributorSerializer
 
 
 class PullRequestList(generics.ListAPIView):
-    queryset = PullRequest.objects.all()
+    queryset = PullRequest.objects.all().order_by('id')[:5]
     serializer_class = PullRequestSerializer
 
 
 class IssueList(generics.ListAPIView):
-    queryset = Issue.objects.all()
+    queryset = Issue.objects.all().order_by('id')[:5]
     serializer_class = IssueSerializer
 
 
 class MostMergesUserList(generics.ListAPIView):
-    queryset = User.objects.all()
+    queryset = User.objects.all().order_by('id')[:5]
     serializer_class = UserSerializer
