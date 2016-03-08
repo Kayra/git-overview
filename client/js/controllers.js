@@ -1,8 +1,8 @@
 (function(){
 
-    var tangentSnowballAppControllers = angular.module('tangentSnowballApp.controllers', []);
+    var gitStatsAppControllers = angular.module('gitStatsApp.controllers', []);
 
-    tangentSnowballAppControllers.controller('DisplayController', ['GitService', function(GitService) {
+    gitStatsAppControllers.controller('DisplayController', ['GitService', function(GitService) {
 
         var vm = this;
 

@@ -1,10 +1,10 @@
 (function(){
 
-    var app = angular.module('tangentSnowballApp', [
+    var app = angular.module('gitStatsApp', [
         'ui.router',
         'ngResource',
-        'tangentSnowballApp.services',
-        'tangentSnowballApp.controllers',
+        'gitStatsApp.services',
+        'gitStatsApp.controllers',
     ])
 
     .config(function($interpolateProvider, $httpProvider, $resourceProvider, $stateProvider, $locationProvider, $urlRouterProvider){

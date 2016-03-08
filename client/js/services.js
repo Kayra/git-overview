@@ -1,10 +1,10 @@
 (function(){
 
-    var tangentSnowballAppServices = angular.module('tangentSnowballApp.services', []);
+    var gitStatsAppServices = angular.module('gitStatsApp.services', []);
 
     var domain = 'http://127.0.0.1:8000/';
 
-    tangentSnowballAppServices.factory("GitService", ['$http', function($http){
+    gitStatsAppServices.factory("GitService", ['$http', function($http){
 
         var gitStats = {};
 

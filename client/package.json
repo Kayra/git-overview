@@ -1,7 +1,7 @@
 {
-  "name": "tangentsnowball",
+  "name": "git-stats",
   "version": "1.0.0",
-  "description": "git integration with django-oscar",
+  "description": "git stats for any repo",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
