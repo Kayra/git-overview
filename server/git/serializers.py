@@ -1,6 +1,11 @@
 from rest_framework import serializers
 
-from .models import Contributor, PullRequest, Issue, User
+from .models import Repository, Contributor, PullRequest, Issue, User
+
+
+class RepositorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Repository
 
 
 class ContributorSerializer(serializers.ModelSerializer):

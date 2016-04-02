@@ -1,7 +1,12 @@
 from rest_framework import generics
 
-from .models import Contributor, PullRequest, Issue, User
-from .serializers import ContributorSerializer, PullRequestSerializer, IssueSerializer, UserSerializer
+from .models import Repository, Contributor, PullRequest, Issue, User
+from .serializers import RepositorySerializer, ContributorSerializer, PullRequestSerializer, IssueSerializer, UserSerializer
+
+
+class RepositoryList(generics.ListAPIView):
+    queryset = Repository.objects.all()
+    serializer_class = RepositorySerializer
 
 
 class ContributorList(generics.ListAPIView):
@@ -20,5 +25,5 @@ class IssueList(generics.ListAPIView):
 
 
 class MostMergesUserList(generics.ListAPIView):
-    queryset = User.objects.all().order_by('id')[:5]
+    queryset = User.objects.all()
     serializer_class = UserSerializer

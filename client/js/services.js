@@ -8,6 +8,10 @@
 
         var gitStats = {};
 
+        gitStats.getRepository = function(){
+            return $http.get(domain + 'git/repository');
+        };
+
         gitStats.getContributors = function(){
             return $http.get(domain + 'git/contributors');
         };

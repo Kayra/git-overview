@@ -82,8 +82,8 @@ WSGI_APPLICATION = 'git-stats.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tangentsnowball',
-        'USER': 'tangentsnowball',
+        'NAME': 'gitstats',
+        'USER': 'gitstats',
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
         'PORT': '5432',

@@ -1,13 +1,32 @@
 from .githubAPI import Git
-from .models import Contributor, PullRequest, Issue, User
+from .models import Repository, Contributor, PullRequest, Issue, User
 
 gitData = Git()
 
 
+def repositoryDetails():
+    """
+    Updates the model with the details of the repository.
+    The repository is composed of:
+    name(string), url(string)
+    """
+
+    repository = gitData.repository
+
+    try:
+        repositoryObject = Repository.objects.get(id=1)
+        repositoryObject.name = repository.name
+        repositoryObject.url = repository.html_url
+    except Repository.DoesNotExist:
+        repositoryObject = Repository(name=repository.name, url=repository.html_url)
+
+    repositoryObject.save()
+
+
 def topContributors():
     """
-    Returns the top five contributors to the repository.
-    Each set in the list is composed of:
+    Updates the model with the top five contributors to the repository.
+    Each contributor is composed of:
     name(string), contributions(int), url(string), avatar_url(string)
     """
 
@@ -17,12 +36,13 @@ def topContributors():
 
     for contributor in contributors:
         try:
-            name = contributor.name.encode('utf-8')
-            contributions = contributor.contributions
-            url = contributor.html_url
-            avatarUrl = contributor.avatar_url
-            contributorsList.append((contributions, name, url, avatarUrl))
-        except AttributeError:
+            if "Check your git settings!" not in contributor.name:
+                name = contributor.name.encode('utf-8')
+                contributions = contributor.contributions
+                url = contributor.html_url
+                avatarUrl = contributor.avatar_url
+                contributorsList.append((contributions, name, url, avatarUrl))
+        except (AttributeError, TypeError):
             pass
 
     sorted(contributorsList)
@@ -33,8 +53,8 @@ def topContributors():
 
 def recentPullRequests():
     """
-    Returns the five most recent pull requests.
-    Each set in the list is composed of:
+    Updates the model with the five most recent pull requests.
+    Each pull request is composed of:
     title(string), creationDate(datetime.datetime), url(string), body(string)
     """
 
@@ -57,8 +77,8 @@ def recentPullRequests():
 
 def recentIssues():
     """
-    Returns the five most recent issues.
-    Each set in the list is composed of:
+    Updates the model with the five most recent issues.
+    Each issue is composed of:
     title(string), creationDate(datetime.datetime), url(string), body(string)
     """
 
@@ -81,8 +101,8 @@ def recentIssues():
 
 def mostMergesUser():
     """
-    Returns the user who has merged the most pull requests.
-    The set is composed of:
+    Updates the model with the user who has merged the most pull requests.
+    The user is composed of:
     name(string)
     """
 
@@ -122,6 +142,7 @@ def mostMergesUser():
 
 
 def updateAPIData():
+    repositoryDetails()
     topContributors()
     recentPullRequests()
     recentIssues()

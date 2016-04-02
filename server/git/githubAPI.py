@@ -1,22 +1,21 @@
 from github import Github
 
 
-class Git:
+class Git(object):
 
-    git = Github()
-
-    repoId = 1431547
-
-    repository = git.get_repo(repoId)
+    def __init__(self):
+        git = Github()
+        repoId = 1431547
+        self.repository = git.get_repo(repoId)
 
     def contributors(self):
-        return Git.repository.get_contributors()
+        return self.repository.get_contributors()
 
     def openPullRequests(self):
-        return Git.repository.get_pulls()
+        return self.repository.get_pulls()
 
     def closedPullRequests(self):
-        return Git.repository.get_pulls(state='closed')
+        return self.repository.get_pulls(state='closed')
 
     def issues(self):
-        return Git.repository.get_issues()
+        return self.repository.get_issues()

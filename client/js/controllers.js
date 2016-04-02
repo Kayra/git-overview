@@ -6,6 +6,16 @@
 
         var vm = this;
 
+        vm.getRepository = function(){
+            GitService.getRepository()
+            .success(function(response){
+                vm.repository = response[0];
+            })
+            .error(function(){
+                vm.error = "The server seems to be down."
+            });
+        };
+
         vm.getContributors = function(){
             GitService.getContributors()
             .success(function(response){
@@ -46,6 +56,7 @@
             });
         };
 
+        vm.getRepository();
         vm.getContributors();
         vm.getPullRequests();
         vm.getIssues();
