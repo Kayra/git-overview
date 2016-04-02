@@ -1,7 +1,7 @@
 {
-  "name": "git-stats",
+  "name": "git-overview",
   "version": "1.0.0",
-  "description": "git stats for any repo",
+  "description": "git overview for any repo",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
