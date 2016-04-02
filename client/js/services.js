@@ -1,34 +1,34 @@
 (function(){
 
-    var gitStatsAppServices = angular.module('gitStatsApp.services', []);
+    var gitOverviewAppServices = angular.module('gitOverviewApp.services', []);
 
     var domain = 'http://127.0.0.1:8000/';
 
-    gitStatsAppServices.factory("GitService", ['$http', function($http){
+    gitOverviewAppServices.factory("GitService", ['$http', function($http){
 
-        var gitStats = {};
+        var gitOverview = {};
 
-        gitStats.getRepository = function(){
+        gitOverview.getRepository = function(){
             return $http.get(domain + 'git/repository');
         };
 
-        gitStats.getContributors = function(){
+        gitOverview.getContributors = function(){
             return $http.get(domain + 'git/contributors');
         };
 
-        gitStats.getPullRequests = function(){
+        gitOverview.getPullRequests = function(){
             return $http.get(domain + 'git/pull-requests');
         };
 
-        gitStats.getIssues = function(){
+        gitOverview.getIssues = function(){
             return $http.get(domain + 'git/issues');
         };
 
-        gitStats.getMostMergesUser = function(){
+        gitOverview.getMostMergesUser = function(){
             return $http.get(domain + 'git/most-merges-user');
         };
 
-        return gitStats;
+        return gitOverview;
 
     }]);
 

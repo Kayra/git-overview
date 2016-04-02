@@ -1,10 +1,10 @@
 (function(){
 
-    var app = angular.module('gitStatsApp', [
+    var app = angular.module('gitOverviewApp', [
         'ui.router',
         'ngResource',
-        'gitStatsApp.services',
-        'gitStatsApp.controllers',
+        'gitOverviewApp.services',
+        'gitOverviewApp.controllers',
     ])
 
     .config(function($interpolateProvider, $httpProvider, $resourceProvider, $stateProvider, $locationProvider, $urlRouterProvider){
@@ -20,9 +20,9 @@
         });
 
         $stateProvider
-            .state('display_git_stats', {
+            .state('display_git_overview', {
                 url: '/',
-                templateUrl: '/partials/display_git_stats.html',
+                templateUrl: '/partials/display_git_overview.html',
                 controller: 'DisplayController as display',
             });
 

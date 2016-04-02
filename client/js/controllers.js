@@ -1,8 +1,8 @@
 (function(){
 
-    var gitStatsAppControllers = angular.module('gitStatsApp.controllers', []);
+    var gitOverviewAppControllers = angular.module('gitOverviewApp.controllers', []);
 
-    gitStatsAppControllers.controller('DisplayController', ['GitService', function(GitService) {
+    gitOverviewAppControllers.controller('DisplayController', ['GitService', function(GitService) {
 
         var vm = this;
 
