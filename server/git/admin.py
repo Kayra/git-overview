@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Contributor, PullRequest, Issue, User
+from .models import Repository, Contributor, PullRequest, Issue, User
 
-admin.register(Contributor, PullRequest, Issue, User)(admin.ModelAdmin)
+admin.register(Repository, Contributor, PullRequest, Issue, User)(admin.ModelAdmin)
