@@ -129,11 +129,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Rest Framework
+
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     )
 }
+
+# Cross-origin resource sharing
 
 CORS_ORIGIN_ALLOW_ALL = True
 

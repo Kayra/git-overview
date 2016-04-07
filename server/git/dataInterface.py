@@ -48,7 +48,13 @@ def topContributors():
     sorted(contributorsList)
 
     for index, contributor in enumerate(contributorsList[:5]):
-        Contributor.objects.update_or_create(contributions=contributor[0], name=contributor[1].decode('utf-8'), url=contributor[2], avatarUrl=contributor[3], position=index)
+        defaultValues = {
+            'contributions': contributor[0],
+            'url': contributor[2],
+            'avatarUrl': contributor[3],
+            'position': index
+        }
+        Contributor.objects.update_or_create(name=contributor[1].decode('utf-8'), defaults=defaultValues)
 
 
 def recentPullRequests():
