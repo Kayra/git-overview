@@ -11,7 +11,9 @@ class Contributor(models.Model):
     contributions = models.IntegerField()
     url = models.CharField(max_length=512)
     avatarUrl = models.CharField(max_length=255)
-    position = models.IntegerField()
+
+    class Meta:
+        ordering = ['-contributions']
 
 
 class PullRequest(models.Model):
@@ -19,7 +21,9 @@ class PullRequest(models.Model):
     creationDate = models.DateField()
     url = models.CharField(max_length=512)
     body = models.TextField()
-    position = models.IntegerField()
+
+    class Meta:
+        ordering = ['-creationDate']
 
 
 class Issue(models.Model):
@@ -27,7 +31,9 @@ class Issue(models.Model):
     creationDate = models.DateField()
     url = models.CharField(max_length=512)
     body = models.TextField()
-    position = models.IntegerField()
+
+    class Meta:
+        ordering = ['-creationDate']
 
 
 class User(models.Model):

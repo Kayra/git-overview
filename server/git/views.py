@@ -10,17 +10,17 @@ class RepositoryList(generics.ListAPIView):
 
 
 class ContributorList(generics.ListAPIView):
-    queryset = Contributor.objects.all().order_by('position')[:5]
+    queryset = Contributor.objects.all()[:5]
     serializer_class = ContributorSerializer
 
 
 class PullRequestList(generics.ListAPIView):
-    queryset = PullRequest.objects.all().order_by('position')[:5]
+    queryset = PullRequest.objects.all()[:5]
     serializer_class = PullRequestSerializer
 
 
 class IssueList(generics.ListAPIView):
-    queryset = Issue.objects.all().order_by('position')[:5]
+    queryset = Issue.objects.all()[:5]
     serializer_class = IssueSerializer
 
 
