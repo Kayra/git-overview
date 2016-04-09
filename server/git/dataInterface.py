@@ -51,7 +51,7 @@ def topContributors():
         defaultValues = {
             'contributions': contributor[0],
             'url': contributor[2],
-            'avatarUrl': contributor[3],
+            'avatarUrl': contributor[3]
         }
         Contributor.objects.update_or_create(name=contributor[1].decode('utf-8'), defaults=defaultValues)
 
@@ -77,7 +77,12 @@ def recentPullRequests():
     sorted(pullRequestList)
 
     for pullRequest in pullRequestList[:5]:
-        PullRequest.objects.update_or_create(title=pullRequest[0], creationDate=pullRequest[1], url=pullRequest[2], body=pullRequest[3])
+        defaultValues = {
+            'creationDate': pullRequest[1],
+            'url': pullRequest[2],
+            'body': pullRequest[3]
+        }
+        PullRequest.objects.update_or_create(title=pullRequest[0], defaults=defaultValues)
 
 
 def recentIssues():
@@ -101,7 +106,12 @@ def recentIssues():
     sorted(issueList)
 
     for issue in issueList[:5]:
-        Issue.objects.update_or_create(title=issue[0], creationDate=issue[1], url=issue[2], body=issue[3])
+        defaultValues = {
+            'creationDate': issue[1],
+            'url': issue[2],
+            'body': issue[3]
+        }
+        Issue.objects.update_or_create(title=issue[0], defaults=defaultValues)
 
 
 def mostMergesUser():
